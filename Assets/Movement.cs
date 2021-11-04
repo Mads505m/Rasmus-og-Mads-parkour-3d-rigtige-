@@ -11,6 +11,12 @@ public class Movement : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
+    public bool isSprinting = false;
+    public float sprintSpeed = 16f;
+
+    public const int max_hop = 2;
+    public int hop = 0;
+
     public Transform Groundcheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -26,6 +32,7 @@ public class Movement : MonoBehaviour
         if(isGrounded && velocity.y<0)
         {
             velocity.y = -2f;
+            hop = 0;
         }
 
 
@@ -46,11 +53,36 @@ public class Movement : MonoBehaviour
 
 
         }
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && (isGrounded ||max_hop>hop))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            hop++;
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+        }
+
+        if (isSprinting == true)
+        {
+            speed = sprintSpeed;
+        }
+        else {
+            if (isSprinting == false)
+            {
+                speed=8;
+            }
+        } 
+
     }
+
+
 }

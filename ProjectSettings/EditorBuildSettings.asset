@@ -7,8 +7,11 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/hovedmenu.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: d96ac2fd3454cf54eb9f95eab77793b6
   - enabled: 1
     path: Assets/Bane1.unity
     guid: 931856a0ef92ce440b825bebc4d84e89
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2b0682e626420e241a34e74ddafd1bc9
   m_configObjects: {}
